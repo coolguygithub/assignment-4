@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curise Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+
+        <div class="booking-content">
+            <h1 style="color: aqua;">Cruise Queen</h1>
+            <p> Welcome to Cruise Queen. We have one of the largest Cruise Service in the World. Here at Queen, Guest's Pleasurement is our first priority. We arrange different types of function like Singing and Dancing Competition, different types of Plays and so more to make your journey Joyful. We provide you a high level of Security and Privacy as you demand. Come and Experience a journey of Lifetime.</p>
+        </div>
+
+
+        <div class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div class="input-group">
+                <label for="">Sailing From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Destination</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                    <input id="first-class-qty" class="inp-style inp-width" type="text" value="0">
+                </div>
+                <div>
+                    <button onclick="ticketQtyHandler('first-class', true)" class="plus-minus-btn">+</button>
+                    <button onclick="ticketQtyHandler('first-class', false)" class="plus-minus-btn">-</button>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy ($100)</label>
+                    <input id="economy-qty" class="inp-style inp-width" type="text" value="0">
+                </div>
+                <div>
+                    <button onclick="ticketQtyHandler('economy', true)" class="plus-minus-btn">+</button>
+                    <button onclick="ticketQtyHandler('economy', false)" class="plus-minus-btn">-</button>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="subtotal-price">$00</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="tax-amount">$00</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Grand Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="grand-total">$00</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style">Book Now</button>
+        </div>
+    </main>
+
+    <script>
+        function ticketQtyHandler(ticket, isIncreas) {
+            const ticketInput = document.getElementById(ticket + '-qty');
+            const ticketQty = qtyValue(ticket);
+            let ticketNewQty = ticketQty;
+            if (isIncreas == true) {
+                ticketNewQty = ticketQty + 1;
+            }
+            if (isIncreas == false && ticketQty > 0) {
+                ticketNewQty = ticketQty - 1;
+            }
+            ticketInput.value = ticketNewQty;
+            subTotal();
+        }
+
+        function qtyValue(ticket) {
+            const ticketInput = document.getElementById(ticket + '-qty');
+            const ticketQty = parseInt(ticketInput.value);
+            return ticketQty;
+        }
+
+        function subTotal() {
+            const firstClassQty = qtyValue('first-class')
+            const economyQty = qtyValue('economy');
+
+            const subtotalPrice = firstClassQty * 150 + economyQty * 100;
+            document.getElementById('subtotal-price').innerText = '$' + subtotalPrice;
+
+            const tax = subtotalPrice * 0.1;
+            document.getElementById('tax-amount').innerText = '$' + tax;
+
+            const grandTotal = subtotalPrice + tax;
+            document.getElementById('grand-total').innerText = '$' + grandTotal;
+        }
+
+    </script>
+    <!--Thank You-->
+</body>
+
+</html>
