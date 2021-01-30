@@ -31,7 +31,10 @@
 
         <div class="booking-content">
             <h1 style="color: aqua;">Cruise Queen</h1>
-            <p> Welcome to Cruise Queen. We have one of the largest Cruise Service in the World. Here at Queen, Guest's Pleasurement is our first priority. We arrange different types of function like Singing and Dancing Competition, different types of Plays and so more to make your journey Joyful. We provide you a high level of Security and Privacy as you demand. Come and Experience a journey of Lifetime.</p>
+            <p> Welcome to Cruise Queen. We have one of the largest Cruise Service in the World. Here at Queen, Guest's
+                Pleasurement is our first priority. We arrange different types of function like Singing and Dancing
+                Competition, different types of Plays and so more to make your journey Joyful. We provide you a high
+                level of Security and Privacy as you demand. Come and Experience a journey of Lifetime.</p>
         </div>
 
 
@@ -48,7 +51,7 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -65,7 +68,7 @@
                     <button onclick="ticketQtyHandler('first-class', false)" class="plus-minus-btn">-</button>
                 </div>
             </div>
-            
+
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
@@ -104,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="thanks-giving" onclick="thanksGiving()" class="btn-style">Book Now</button>
         </div>
     </main>
 
@@ -141,6 +144,10 @@
 
             const grandTotal = subtotalPrice + tax;
             document.getElementById('grand-total').innerText = '$' + grandTotal;
+        }
+        
+        function thanksGiving() {
+            document.getElementById('thanks-giving').innerText = "Thank You for Choosing Us..!";
         }
 
     </script>
